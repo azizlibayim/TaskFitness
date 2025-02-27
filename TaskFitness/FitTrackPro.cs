@@ -42,17 +42,7 @@ namespace TaskFitness
                 Console.WriteLine($"User {userName} has been added.");
             }
         }
-        public override void DeleteUser(string userName)
-        {
-            if (Users.Remove(userName))
-            {
-                Console.WriteLine($"User {userName} has been deleted.");
-            }
-            else
-            {
-                Console.WriteLine("User not found. No user was deleted.");
-            }
-        }
+       
         public override void PrintInfo()
         {
             Console.WriteLine($"FitTrack Pro '{DeviceName}' has {BatteryLife} hours of battery life, {TotalSteps} total steps, and {Users.Count} users.");

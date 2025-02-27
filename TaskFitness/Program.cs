@@ -16,22 +16,17 @@ class Program
         device.TrackSteps(-50);
 
         device.PrintInfo();
-        device.DeleteUser("Bayim");
 
 
-        FitnessTracker newDevice = new FitTrackPro("Ramal's tracker");
-        newDevice.AddUser("Ramal");
-        newDevice.AddUser("Elbrus");
+        FitnessTracker newDevice = new FitTrackPro("Goshgar's tracker");
         newDevice.AddUser("Goshgar");
-        newDevice.AddUser("Khazar");
+        newDevice.AddUser("Elbrus");
+        newDevice.AddUser("Kapaz");
+        newDevice.AddUser("Shah");
         newDevice.AddUser("Baba");
-        newDevice.AddUser("Volga");
 
         newDevice.TrackSteps(78000);
         newDevice.PrintInfo();
-
-        newDevice.DeleteUser("Khazar");
-
 
         Activity running = new Running("Morning Run", 30);
         Activity cycling = new Cycling("Evening Ride", 50);

@@ -14,11 +14,15 @@ namespace TaskFitness
         public string DeviceName { get; private set; }
         public int BatteryLife { get; set; } = 24;
         public int TotalSteps { get; private set; } = 0;
-        private List<string> Users { get; set; } = new List<string>();
+        private string[] Users { get; set; }
 
+        public int Size = 0;
         public FitnessTracker(string deviceName)
         {
             DeviceName = deviceName;
+            BatteryLife = 24;
+            TotalSteps = 0;
+            Users = new string[3]; 
         }
         public virtual void TrackSteps( int steps)
 
@@ -39,34 +43,21 @@ namespace TaskFitness
 
         public virtual void AddUser(string userName)
         {
-            if (Users.Count >= 3)
+            if (Size >= Users.Length)
             {
                 Console.WriteLine("Cannot add more users. The limit of 3 users has been reached.");
+                return;
             }
-            else 
-            {
-                Users.Add(userName);
-                Console.WriteLine($"User {userName} has been added.");
-            }
-        }
-
-        public virtual void DeleteUser(string userName)
-        {
-            if (Users.Remove(userName))
-            {
-                Console.WriteLine($"User {userName} has been deleted.");
-            }
-            else
-            {
-                Console.WriteLine("User not found. No user was deleted.");
-            }
+            Users[Size++] = userName;
+            Console.WriteLine($"User {userName} has been added.");
+            
         }
 
 
 
         public virtual void PrintInfo ()
         {
-            Console.WriteLine($"FitTrack is called {DeviceName}, it has {BatteryLife} hours of battery life, {TotalSteps} total steps, and {Users.Count} users.");
+            Console.WriteLine($"FitTrack is called {DeviceName}, it has {BatteryLife} hours of battery life, {TotalSteps} total steps, and {Size} users.");
         }
 
     }
